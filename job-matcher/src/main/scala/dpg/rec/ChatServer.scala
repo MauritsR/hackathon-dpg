@@ -6,6 +6,8 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import org.http4s.implicits._
 import org.http4s.server.middleware.Logger
 import fs2.{INothing, Stream}
+import cats.implicits._
+import dpg.rec.AppRoutes.jobsRoutes
 
 object ChatServer {
 
@@ -13,7 +15,7 @@ object ChatServer {
     T: Timer[F],
     C: ContextShift[F]
   ): Stream[F, INothing] = {
-    val httpApp      = ChatRoutes.chatRoutes(queue, topic).orNotFound
+    val httpApp      = (AppRoutes.chatRoutes(queue, topic) <+> jobsRoutes).orNotFound
     val finalHttpApp = Logger.httpApp(logHeaders = true, logBody = true)(httpApp)
     for {
       exitCode <- BlazeServerBuilder[F]
