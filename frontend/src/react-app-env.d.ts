@@ -1,3 +1,3 @@
 /// <reference types="react-scripts" />
 
-declare module 'react-hammerjs-18'
+declare module "react-hammerjs-18";
