@@ -2,6 +2,7 @@ import { Box, Container, CssBaseline } from "@mui/material";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import MatchFinder from "./pages/MatchFinder";
 import * as routes from "./constants/routes";
+import ApplicantChat from "./pages/ApplicantChat";
 
 export default function App() {
   return (
@@ -46,7 +47,7 @@ function Layout() {
 
       <CssBaseline />
       <Container maxWidth="sm">
-        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+        <Box sx={{ height: "100vh" }}>
           <Outlet />
         </Box>
       </Container>
@@ -66,14 +67,6 @@ function CompanyChat() {
   return (
     <div>
       <h2>Company chat view</h2>
-    </div>
-  );
-}
-
-function ApplicantChat() {
-  return (
-    <div>
-      <h2>Applicant chat view</h2>
     </div>
   );
 }
