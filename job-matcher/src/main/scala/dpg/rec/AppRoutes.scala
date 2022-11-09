@@ -65,6 +65,25 @@ object AppRoutes {
     }
   }
 
+  def endConversation[F[_]: Sync: Concurrent](queue: Queue[F, FromClient], topic: Topic[F, ToClient]): HttpRoutes[F] = {
+    val dsl = new Http4sDsl[F] {}
+    import dsl._
+
+    HttpRoutes.of[F] { case GET -> Root / "ws" / userName / "end" =>
+      val toClient = topic
+        .subscribe(1)
+        .map(_ => WebSocketFrame.Close())
+
+      WebSocketBuilder[F].build(
+        toClient,
+        _.collect({ case WebSocketFrame.Close(_) =>
+          FromClient(userName, s"$userName has left the conversation")
+        })
+          .through(queue.enqueue)
+      )
+    }
+  }
+
   def chatRoutes[F[_]: Sync: Concurrent](queue: Queue[F, FromClient], topic: Topic[F, ToClient]): HttpRoutes[F] = {
     val dsl = new Http4sDsl[F] {}
     import dsl._

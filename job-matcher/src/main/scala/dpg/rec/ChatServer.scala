@@ -7,7 +7,7 @@ import org.http4s.implicits._
 import org.http4s.server.middleware.{CORS, CORSConfig, Logger}
 import fs2.{INothing, Stream}
 import cats.implicits._
-import dpg.rec.AppRoutes.jobsRoutes
+import dpg.rec.AppRoutes.{endConversation, jobsRoutes}
 
 import scala.concurrent.duration.DurationInt
 
@@ -17,12 +17,8 @@ object ChatServer {
     T: Timer[F],
     C: ContextShift[F]
   ): Stream[F, INothing] = {
-    val httpApp = (AppRoutes.chatRoutes(queue, topic) <+> jobsRoutes).orNotFound
-    val config = CORSConfig(
-      anyOrigin = true,
-      allowCredentials = false,
-      maxAge = 10.day.toSeconds
-    )
+    val httpApp      = (AppRoutes.chatRoutes(queue, topic) <+> endConversation(queue, topic) <+> jobsRoutes).orNotFound
+    val config       = CORSConfig(anyOrigin = true, allowCredentials = false, maxAge = 10.day.toSeconds)
     val cors         = CORS(httpApp, config)
     val finalHttpApp = Logger.httpApp(logHeaders = true, logBody = true)(cors)
     for {
