@@ -1,6 +1,7 @@
 import { Box, Container, CssBaseline } from "@mui/material";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import MatchFinder from "./pages/MatchFinder";
+import * as routes from "./constants/routes";
 
 export default function App() {
   return (
@@ -27,13 +28,13 @@ function Layout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/match-finder">Match finder</Link>
+            <Link to={routes.matchFinder}>Match finder</Link>
           </li>
           <li>
             <Link to="/company-chat">Company chat</Link>
           </li>
           <li>
-            <Link to="/applicant-chat">Applicant chat</Link>
+            <Link to={routes.applicantChat}>Applicant chat</Link>
           </li>
           <li>
             <Link to="/nothing-here">404</Link>
