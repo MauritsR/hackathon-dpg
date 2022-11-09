@@ -20,8 +20,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="match-finder" element={<MatchFinder />} />
+          <Route path="company-chat" element={<CompanyChat />} />
+          <Route path="applicant-chat" element={<ApplicantChat />} />
 
           {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
@@ -44,13 +45,16 @@ function Layout() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/match-finder">Match finder</Link>
           </li>
           <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/company-chat">Company chat</Link>
           </li>
           <li>
-            <Link to="/nothing-here">Nothing Here</Link>
+            <Link to="/applicant-chat">Applicant chat</Link>
+          </li>
+          <li>
+            <Link to="/nothing-here">404</Link>
           </li>
         </ul>
       </nav>
@@ -68,23 +72,31 @@ function Layout() {
 function Home() {
   return (
     <div>
-      <h2>Home</h2>
+      <h2>Welcome to (insert app name here)!</h2>
     </div>
   );
 }
 
-function About() {
+function MatchFinder() {
   return (
     <div>
-      <h2>About</h2>
+      <h2>Match finder view</h2>
     </div>
   );
 }
 
-function Dashboard() {
+function CompanyChat() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <h2>Company chat view</h2>
+    </div>
+  );
+}
+
+function ApplicantChat() {
+  return (
+    <div>
+      <h2>Applicant chat view</h2>
     </div>
   );
 }
