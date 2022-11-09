@@ -1,10 +1,19 @@
 import MatchCard from "../components/MatchCard";
+import useGetJobs from "../services/useGetJobs";
 
-export default function MatchFinder() {
+const MatchFinder = () => {
+  const jobs = useGetJobs();
+
+  if (!jobs.length) return null;
+
+  const job = jobs[0];
+
   return (
     <div>
       <h2>Match finder view</h2>
-      <MatchCard />
+      <MatchCard job={job} />
     </div>
   );
-}
+};
+
+export default MatchFinder;

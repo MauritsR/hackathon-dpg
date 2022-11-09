@@ -3,8 +3,13 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Swipe from "./Swipe";
+import type { Job } from "../types/job";
 
-export default function MatchCard() {
+type MatchCardProps = {
+  job: Job;
+};
+
+const MatchCard: React.FunctionComponent<MatchCardProps> = ({ job }) => {
   return (
     <Swipe>
       <Card
@@ -17,22 +22,23 @@ export default function MatchCard() {
         <CardMedia
           component="img"
           height="140"
-          image="/images/reptile.jpg"
-          alt="green iguana"
+          image={job.photo}
+          alt="job photo"
           sx={{
             pointerEvents: "none",
           }}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {job.jobTitle}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {job.description}
           </Typography>
         </CardContent>
       </Card>
     </Swipe>
   );
-}
+};
+
+export default MatchCard;
