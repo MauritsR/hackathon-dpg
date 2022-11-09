@@ -13,7 +13,7 @@ import io.circe.generic.auto._
 
 object AppRoutes {
 
-  def jobsRoutes[F[_]: Sync: Concurrent] = {
+  def jobsRoutes[F[_]: Sync: Concurrent]: HttpRoutes[F] = {
     val dsl = new Http4sDsl[F] {}
     import dsl._
 
@@ -72,7 +72,7 @@ object AppRoutes {
     HttpRoutes.of[F] { case GET -> Root / "ws" / userName =>
       val toClient = topic
         .subscribe(1000)
-        .map(toClientMessage => WebSocketFrame.Text(toClientMessage.message))
+        .map(toClientMessage => WebSocketFrame.Text(toClientMessage.message.asJson.toString()))
 
       WebSocketBuilder[F].build(
         toClient,
