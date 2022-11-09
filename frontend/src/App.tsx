@@ -1,4 +1,4 @@
-import * as React from "react";
+import { Box, Container, CssBaseline } from "@mui/material";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import MatchFinder from "./pages/MatchFinder";
 
@@ -62,10 +62,12 @@ function Layout() {
 
       <hr />
 
-      {/* An <Outlet> renders whatever child route is currently active,
-          so you can think about this <Outlet> as a placeholder for
-          the child routes we defined above. */}
-      <Outlet />
+      <CssBaseline />
+      <Container maxWidth="sm">
+        <Box sx={{ bgcolor: "#cfe8fc", height: "100vh" }}>
+          <Outlet />
+        </Box>
+      </Container>
     </div>
   );
 }
