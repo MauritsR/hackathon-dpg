@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import MatchCard from "../components/MatchCard";
 import { TIME_TO_NEXT_CARD } from "../constants/swipe";
 import useGetJobs from "../services/useGetJobs";
 import * as routes from "../constants/routes";
+import MatchFinderCard from "../components/MatchFinderCard";
 
 const MatchFinder: React.FunctionComponent = () => {
   const jobs = useGetJobs();
   const [jobIndex, setJobIndex] = useState(0);
   const navigate = useNavigate();
+  const job = jobs[jobIndex];
 
   const handleRejectedJob = () => {
     setTimeout(() => {
@@ -18,16 +19,16 @@ const MatchFinder: React.FunctionComponent = () => {
   };
 
   const handleChosenJob = () => {
-    navigate(routes.applicantChat);
+    navigate(routes.applicantChat, {
+      state: job,
+    });
   };
 
   if (!jobs.length) return null;
 
-  const job = jobs[jobIndex];
-
   return (
-    <MatchCard
-      job={{ ...job }}
+    <MatchFinderCard
+      job={job}
       onRejectJob={handleRejectedJob}
       onChooseJob={handleChosenJob}
     />
