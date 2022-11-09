@@ -14,7 +14,7 @@ const MatchFinder: React.FunctionComponent = () => {
   const handleRejectedJob = () => {
     setTimeout(() => {
       setJobIndex(jobIndex + 1);
-    }, TIME_TO_NEXT_CARD);
+    }, TIME_TO_NEXT_CARD / 2);
   };
 
   const handleChosenJob = () => {
