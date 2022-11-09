@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
+import MatchFinder from "./pages/MatchFinder";
 
 export default function App() {
   return (
@@ -73,14 +74,6 @@ function Home() {
   return (
     <div>
       <h2>Welcome to (insert app name here)!</h2>
-    </div>
-  );
-}
-
-function MatchFinder() {
-  return (
-    <div>
-      <h2>Match finder view</h2>
     </div>
   );
 }
