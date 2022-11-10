@@ -9,4 +9,5 @@ export type Job = {
   jobCharacteristic2: string;
   jobCharacteristic3: string;
   primaryColor: string;
+  id: string;
 };

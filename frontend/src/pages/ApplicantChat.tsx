@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Paper from "@mui/material/Paper";
 import MatchCard from "../components/MatchCard";
@@ -5,13 +6,12 @@ import { Job } from "../types/job";
 import useChat from "../services/useChat";
 import ChatMessages from "../components/ChatMessages";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
 
 const ApplicantChat = () => {
   const location = useLocation();
   const job = location.state as Job;
   const [input, setInput] = useState("");
-  const { messages, sendMessage } = useChat({
+  const { messages, sendMessage, setJob } = useChat({
     localUser: {
       name: "applicant",
     },
@@ -20,6 +20,12 @@ const ApplicantChat = () => {
       avatar: job.logo,
     },
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setJob(job.id);
+    }, 50);
+  }, [job.id, setJob]);
 
   return (
     <Paper sx={{ m: 2, p: 2 }} elevation={3}>

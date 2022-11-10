@@ -16,9 +16,9 @@ const Video = styled.video`
   left: 0;
 `;
 
-const SECONDARY_COLOR = "5d44db";
+const SECONDARY_COLOR = "#5d44db";
 const PRIMARY_COLOR = "#c2db44";
-const SMALL_TEXT_COLOR = "white";
+const SMALL_TEXT_COLOR = "#5d44db";
 
 const Wrapper = styled.div`
   display: flex;
@@ -53,8 +53,18 @@ const Home: React.FunctionComponent = () => {
         )}
         {userType === UserType.Applicant && (
           <Typography
-            sx={{ zIndex: 1, color: SMALL_TEXT_COLOR, textAlign: "center" }}
-            variant="h5"
+            sx={{
+              zIndex: 1,
+              color: SMALL_TEXT_COLOR,
+              textAlign: "center",
+              fontWeight: 500,
+              width: "100%",
+              position: "absolute",
+              top: 0,
+              p: 2,
+              backgroundColor: PRIMARY_COLOR,
+            }}
+            variant="h4"
             gutterBottom
           >
             <b>Looking for (a) company?</b>
@@ -62,8 +72,18 @@ const Home: React.FunctionComponent = () => {
         )}
         {userType === UserType.Company && (
           <Typography
-            sx={{ zIndex: 1, color: SMALL_TEXT_COLOR, textAlign: "center" }}
-            variant="h5"
+            sx={{
+              zIndex: 1,
+              color: SMALL_TEXT_COLOR,
+              textAlign: "center",
+              fontWeight: 500,
+              width: "100%",
+              position: "absolute",
+              top: 0,
+              p: 2,
+              backgroundColor: PRIMARY_COLOR,
+            }}
+            variant="h4"
             gutterBottom
           >
             <b>Looking for talents?</b>
@@ -75,6 +95,7 @@ const Home: React.FunctionComponent = () => {
               zIndex: 1,
               color: SECONDARY_COLOR,
               textStroke: "1px black",
+              fontWeight: 500,
             }}
             variant="h2"
             gutterBottom
@@ -99,7 +120,9 @@ const Home: React.FunctionComponent = () => {
             aria-label="add to shopping cart"
             onClick={() => navigate(matchFinder)}
           >
-            GO!
+            <Typography variant="h4" sx={{ fontWeight: 500 }}>
+              GO!
+            </Typography>
           </IconButton>
         )}
         {userType !== UserType.Applicant && (
@@ -169,7 +192,9 @@ const Home: React.FunctionComponent = () => {
             aria-label="add to shopping cart"
             onClick={() => navigate(companyChat)}
           >
-            GO!
+            <Typography variant="h4" sx={{ fontWeight: 500 }}>
+              GO!
+            </Typography>
           </IconButton>
         )}
       </Wrapper>

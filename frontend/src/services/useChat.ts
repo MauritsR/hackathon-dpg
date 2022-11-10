@@ -3,21 +3,34 @@ import { ChatParticipant, Message } from "../types/chat";
 
 const useChat = ({
   remoteUser,
+  localUser,
 }: {
   localUser: ChatParticipant;
   remoteUser: ChatParticipant;
 }) => {
+  const [jobId, setJobId] = useState(null);
   const ws = useRef<WebSocket>();
   const [messages, setMessages] = useState<Message[]>([
     {
-      author: "system",
+      from: "system",
+      to: localUser.name,
       content: `Hoi, Je praat nu met ${remoteUser.name}!`,
       avatar: remoteUser.avatar,
     },
   ]);
 
   const sendMessage = (message: string) => {
-    ws.current?.send(message);
+    const data: Message = {
+      content: message,
+      from: localUser.name,
+      to: remoteUser.name,
+      avatar: localUser?.avatar,
+    };
+    ws.current?.send(JSON.stringify(data));
+  };
+
+  const setJob = (id: string) => {
+    ws.current?.send(JSON.stringify({ id }));
   };
 
   useEffect(() => {
@@ -41,14 +54,22 @@ const useChat = ({
 
     ws.current.onmessage = (event) => {
       if (event.data !== "") {
-        setMessages([...messages, JSON.parse(event.data)]);
+        const data = JSON.parse(JSON.parse(event.data).content);
+        if (data.id) {
+          setJobId(data.id);
+        } else {
+          setMessages([...messages, data]);
+        }
       }
     };
-  }, [messages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     messages,
     sendMessage,
+    setJob,
+    jobId,
   };
 };
 
