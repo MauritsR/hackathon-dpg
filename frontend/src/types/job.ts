@@ -5,4 +5,7 @@ export type Job = {
   location: string;
   logo: string;
   photo: string;
+  jobCharacteristic1: string;
+  jobCharacteristic2: string;
+  jobCharacteristic3: string;
 };

@@ -7,6 +7,13 @@ import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
 import styled from "@emotion/styled";
 import type { Job } from "../types/job";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import CelebrationOutlined from "@mui/icons-material/CelebrationOutlined";
+import MopedOutlined from "@mui/icons-material/MopedOutlined";
+import ThumbUpOutlined from "@mui/icons-material/ThumbUpOutlined";
 
 type MatchCardProps = {
   job: Job;
@@ -48,6 +55,27 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
               </Typography>
               <Image src={job.logo} alt="logo" />
             </Stack>
+
+            <List dense>
+              <ListItem>
+                <ListItemIcon>
+                  <CelebrationOutlined />
+                </ListItemIcon>
+                <ListItemText primary={job.jobCharacteristic1} />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <MopedOutlined />
+                </ListItemIcon>
+                <ListItemText primary={job.jobCharacteristic2} />
+              </ListItem>
+              <ListItem>
+                <ListItemIcon>
+                  <ThumbUpOutlined />
+                </ListItemIcon>
+                <ListItemText primary={job.jobCharacteristic3} />
+              </ListItem>
+            </List>
             <Typography sx={{ mt: 1 }} variant="body2" color="text.secondary">
               {job.description}
             </Typography>
