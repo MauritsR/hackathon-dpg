@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import { Job } from "../types/job";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChatParticipant, Message } from "../types/chat";
 
 const useChat = ({
@@ -9,6 +8,7 @@ const useChat = ({
   localUser: ChatParticipant;
   remoteUser: ChatParticipant;
 }) => {
+  const ws = useRef<WebSocket>();
   const [messages, setMessages] = useState<Message[]>([
     {
       author: "system",
@@ -16,34 +16,41 @@ const useChat = ({
     },
   ]);
 
-  const handleNewMessage = useCallback(
-    (message: Message) => {
-      setMessages([...messages, message]);
-    },
-    [messages]
-  );
+  const sendMessage = (message: string) => {
+    ws.current?.send(message);
+  };
 
   useEffect(() => {
-    let ws: WebSocket;
-    const url = new URL(
-      "/ws/" + encodeURI(remoteUser.name),
-      "http://localhost:8080"
-    );
-    url.protocol = url.protocol.replace("http", "ws");
+    if (!ws.current) {
+      const url = new URL(
+        "/ws/" + encodeURI(remoteUser.name),
+        "http://localhost:8080"
+      );
+      url.protocol = url.protocol.replace("http", "ws");
 
-    ws = new WebSocket(url.href);
-    ws.onmessage = (event) => {
+      ws.current = new WebSocket(url.href);
+
+      return () => {
+        ws.current?.close();
+      };
+    }
+  }, [remoteUser.avatar, remoteUser.name]);
+
+  useEffect(() => {
+    if (!ws.current) return;
+
+    ws.current.onmessage = (event) => {
+      console.log("on message data: ", event.data);
       if (event.data !== "") {
-        handleNewMessage({
-          ...JSON.parse(event.data),
-          avatar: remoteUser.avatar,
-        });
+        setMessages([...messages, JSON.parse(event.data)]);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [messages]);
 
-  return messages;
+  return {
+    messages,
+    sendMessage,
+  };
 };
 
 export default useChat;
