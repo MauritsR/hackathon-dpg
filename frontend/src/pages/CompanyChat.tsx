@@ -22,7 +22,7 @@ const CompanyChat = () => {
       avatar: job?.logo || "",
     },
     remoteUser: {
-      name: "applicant",
+      name: "een geïnteresseerde",
     },
   });
 

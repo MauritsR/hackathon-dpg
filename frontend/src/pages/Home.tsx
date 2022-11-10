@@ -6,6 +6,7 @@ import Person from "@mui/icons-material/Person";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { companyChat, matchFinder } from "../constants/routes";
+import Stack from "@mui/material/Stack";
 
 const Video = styled.video`
   object-fit: cover;
@@ -104,99 +105,101 @@ const Home: React.FunctionComponent = () => {
           </Typography>
         )}
 
-        {userType === UserType.Applicant && (
-          <IconButton
-            sx={{
-              backgroundColor: PRIMARY_COLOR,
-              ":hover": {
-                backgroundColor: PRIMARY_COLOR,
-              },
-              color: SECONDARY_COLOR,
-              height: "100px",
-              width: "100px",
-              m: 4,
-            }}
-            size="large"
-            aria-label="add to shopping cart"
-            onClick={() => navigate(matchFinder)}
-          >
-            <Typography variant="h4" sx={{ fontWeight: 500 }}>
-              GO!
-            </Typography>
-          </IconButton>
-        )}
-        {userType !== UserType.Applicant && (
-          <IconButton
-            sx={{
-              backgroundColor: PRIMARY_COLOR,
-              ":hover": {
-                backgroundColor: PRIMARY_COLOR,
-              },
-              color: SECONDARY_COLOR,
-              height: "100px",
-              width: "100px",
-              m: 4,
-            }}
-            size="large"
-            aria-label="add to shopping cart"
-            onClick={() => setUserType(UserType.Applicant)}
-          >
-            <Person
+        <Stack direction="row">
+          {userType === UserType.Applicant && (
+            <IconButton
               sx={{
                 backgroundColor: PRIMARY_COLOR,
-                height: "50px",
-                width: "50px",
+                ":hover": {
+                  backgroundColor: PRIMARY_COLOR,
+                },
+                color: SECONDARY_COLOR,
+                height: "100px",
+                width: "100px",
+                m: 4,
               }}
-            />
-          </IconButton>
-        )}
+              size="large"
+              aria-label="add to shopping cart"
+              onClick={() => navigate(matchFinder)}
+            >
+              <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                GO!
+              </Typography>
+            </IconButton>
+          )}
+          {userType !== UserType.Applicant && (
+            <IconButton
+              sx={{
+                backgroundColor: PRIMARY_COLOR,
+                ":hover": {
+                  backgroundColor: PRIMARY_COLOR,
+                },
+                color: SECONDARY_COLOR,
+                height: "100px",
+                width: "100px",
+                m: 4,
+              }}
+              size="large"
+              aria-label="add to shopping cart"
+              onClick={() => setUserType(UserType.Applicant)}
+            >
+              <Person
+                sx={{
+                  backgroundColor: PRIMARY_COLOR,
+                  height: "50px",
+                  width: "50px",
+                }}
+              />
+            </IconButton>
+          )}
 
-        {userType !== UserType.Company && (
-          <IconButton
-            sx={{
-              backgroundColor: PRIMARY_COLOR,
-              ":hover": {
-                backgroundColor: PRIMARY_COLOR,
-              },
-              color: SECONDARY_COLOR,
-              height: "100px",
-              width: "100px",
-              m: 4,
-            }}
-            size="large"
-            aria-label="add to shopping cart"
-            onClick={() => setUserType(UserType.Company)}
-          >
-            <Business
+          {userType !== UserType.Company && (
+            <IconButton
               sx={{
                 backgroundColor: PRIMARY_COLOR,
-                height: "50px",
-                width: "50px",
+                ":hover": {
+                  backgroundColor: PRIMARY_COLOR,
+                },
+                color: SECONDARY_COLOR,
+                height: "100px",
+                width: "100px",
+                m: 4,
               }}
-            />
-          </IconButton>
-        )}
-        {userType === UserType.Company && (
-          <IconButton
-            sx={{
-              backgroundColor: PRIMARY_COLOR,
-              ":hover": {
+              size="large"
+              aria-label="add to shopping cart"
+              onClick={() => setUserType(UserType.Company)}
+            >
+              <Business
+                sx={{
+                  backgroundColor: PRIMARY_COLOR,
+                  height: "50px",
+                  width: "50px",
+                }}
+              />
+            </IconButton>
+          )}
+          {userType === UserType.Company && (
+            <IconButton
+              sx={{
                 backgroundColor: PRIMARY_COLOR,
-              },
-              color: SECONDARY_COLOR,
-              height: "100px",
-              width: "100px",
-              m: 4,
-            }}
-            size="large"
-            aria-label="add to shopping cart"
-            onClick={() => navigate(companyChat)}
-          >
-            <Typography variant="h4" sx={{ fontWeight: 500 }}>
-              GO!
-            </Typography>
-          </IconButton>
-        )}
+                ":hover": {
+                  backgroundColor: PRIMARY_COLOR,
+                },
+                color: SECONDARY_COLOR,
+                height: "100px",
+                width: "100px",
+                m: 4,
+              }}
+              size="large"
+              aria-label="add to shopping cart"
+              onClick={() => navigate(companyChat)}
+            >
+              <Typography variant="h4" sx={{ fontWeight: 500 }}>
+                GO!
+              </Typography>
+            </IconButton>
+          )}
+        </Stack>
       </Wrapper>
     </>
   );

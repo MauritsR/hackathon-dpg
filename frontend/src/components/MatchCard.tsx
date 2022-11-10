@@ -34,6 +34,7 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
             willChange: "transform",
             transition: "all 0.3s ease-in-out",
             boxShadow: 4,
+            height: "100%",
           }}
         >
           <CardMedia
@@ -42,12 +43,14 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
             image={job.photo}
             alt="job photo"
             sx={{
+              height: "100%",
               pointerEvents: "none",
             }}
           />
           <CardContent
             sx={{
               pointerEvents: "none",
+              height: "100%",
             }}
           >
             <Stack direction="row" justifyContent="space-between">
