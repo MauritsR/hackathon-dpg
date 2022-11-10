@@ -4,6 +4,7 @@ import MatchFinder from "./pages/MatchFinder";
 import * as routes from "./constants/routes";
 import ApplicantChat from "./pages/ApplicantChat";
 import CompanyChat from "./pages/CompanyChat";
+import Home from "./pages/Home";
 
 export default function App() {
   return (
@@ -35,12 +36,6 @@ function Layout() {
           <li>
             <Link to="/company-chat">Company chat</Link>
           </li>
-          <li>
-            <Link to={routes.applicantChat}>Applicant chat</Link>
-          </li>
-          <li>
-            <Link to="/nothing-here">404</Link>
-          </li>
         </ul>
       </nav>
 
@@ -52,14 +47,6 @@ function Layout() {
           <Outlet />
         </Box>
       </Container>
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h2>Welcome to (insert app name here)!</h2>
     </div>
   );
 }

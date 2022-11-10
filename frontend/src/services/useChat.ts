@@ -40,7 +40,6 @@ const useChat = ({
     if (!ws.current) return;
 
     ws.current.onmessage = (event) => {
-      console.log("on message data: ", event.data);
       if (event.data !== "") {
         setMessages([...messages, JSON.parse(event.data)]);
       }
