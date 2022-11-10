@@ -10,5 +10,6 @@ case class JobSummary(
   company: String,
   location: String,
   logo: String,
-  photo: String
+  photo: String,
+  primaryColor: String
 )

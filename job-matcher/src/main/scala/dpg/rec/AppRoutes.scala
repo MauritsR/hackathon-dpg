@@ -30,7 +30,8 @@ object AppRoutes {
             "Centric",
             "Enschede",
             "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/logos/logo_centric.png?token=GHSAT0AAAAAABRFNBDBIAWXUK7ACZOCOXPAY3LUNBQ",
-            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_centric.jpeg?token=GHSAT0AAAAAABRFNBDAOBIHVWMOVUEJA3YQY3LUNRQ"
+            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_centric.jpeg?token=GHSAT0AAAAAABRFNBDAOBIHVWMOVUEJA3YQY3LUNRQ",
+            "#32B345"
           ),
           JobSummary(
             2,
@@ -42,7 +43,8 @@ object AppRoutes {
             "VNOM",
             "Amsterdam",
             "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/logos/logo_vnom.jpeg?token=GHSAT0AAAAAABRFNBDAIIEK6LMK36GEO3UEY3LUOOQ",
-            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_vnom.jpeg?token=GHSAT0AAAAAABRFNBDBIP5U2QL7WD3QDXZYY3LUPIA"
+            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_vnom.jpeg?token=GHSAT0AAAAAABRFNBDBIP5U2QL7WD3QDXZYY3LUPIA",
+            "#369FD4"
           ),
           JobSummary(
             3,
@@ -54,7 +56,8 @@ object AppRoutes {
             "Jumbo Supermarkten",
             "Nieuwegein",
             "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/logos/logo_jumbo.png?token=GHSAT0AAAAAABRFNBDAZH2PVEVIPQ5QEPVAY3LUPXA",
-            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_jumbo.jpeg?token=GHSAT0AAAAAABRFNBDBWXYCAHCYGVHASFOEY3LUQEA"
+            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_jumbo.jpeg?token=GHSAT0AAAAAABRFNBDBWXYCAHCYGVHASFOEY3LUQEA",
+            "#FAD240"
           ),
           JobSummary(
             4,
@@ -66,7 +69,8 @@ object AppRoutes {
             "DPG Media",
             "Amsterdam",
             "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/logos/logo_dpg_recruitment.png?token=GHSAT0AAAAAABRFNBDALXZKF4BJDC572C6EY3LUQRQ",
-            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_dpgmedia_1.png?token=GHSAT0AAAAAABRFNBDBP6RXKGVND5FWEMR4Y3LURBQ"
+            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_dpgmedia_1.png?token=GHSAT0AAAAAABRFNBDBP6RXKGVND5FWEMR4Y3LURBQ",
+            "#252525"
           ),
           JobSummary(
             5,
@@ -78,7 +82,8 @@ object AppRoutes {
             "DPG Media",
             "Amsterdam",
             "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/logos/logo_dpg_recruitment.png?token=GHSAT0AAAAAABRFNBDALXZKF4BJDC572C6EY3LUQRQ",
-            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_dpgmedia_2.jpeg?token=GHSAT0AAAAAABRFNBDADUUPHWD4G5WK6DKKY3LURPQ"
+            "https://raw.githubusercontent.com/MauritsR/hackathon-dpg/main/job-matcher/src/main/resources/attachements/photos/photo_dpgmedia_2.jpeg?token=GHSAT0AAAAAABRFNBDADUUPHWD4G5WK6DKKY3LURPQ",
+            "#252525"
           )
         )
       Ok(jobs.asJson)
