@@ -1,12 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
 import { Job } from "../types/job";
-import { Message } from "../types/message";
+import { ChatParticipant, Message } from "../types/chat";
 
-const useChat = ({ user, job }: { user: string; job: Job }) => {
+const useChat = ({
+  localUser,
+  remoteUser,
+}: {
+  localUser: ChatParticipant;
+  remoteUser: ChatParticipant;
+}) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       author: "system",
-      content: `Je praat nu met ${job.company}!`,
+      content: `Hoi ${localUser.name}, Je praat nu met ${remoteUser.name}!`,
     },
   ]);
 
@@ -19,7 +25,10 @@ const useChat = ({ user, job }: { user: string; job: Job }) => {
 
   useEffect(() => {
     let ws: WebSocket;
-    const url = new URL("/ws/" + encodeURI(user), "http://localhost:8080");
+    const url = new URL(
+      "/ws/" + encodeURI(remoteUser.name),
+      "http://localhost:8080"
+    );
     url.protocol = url.protocol.replace("http", "ws");
 
     ws = new WebSocket(url.href);
@@ -27,7 +36,7 @@ const useChat = ({ user, job }: { user: string; job: Job }) => {
       if (event.data !== "") {
         handleNewMessage({
           ...JSON.parse(event.data),
-          avatar: job.logo,
+          avatar: remoteUser.avatar,
         });
       }
     };

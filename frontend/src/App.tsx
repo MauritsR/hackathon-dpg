@@ -3,6 +3,7 @@ import { Routes, Route, Outlet, Link } from "react-router-dom";
 import MatchFinder from "./pages/MatchFinder";
 import * as routes from "./constants/routes";
 import ApplicantChat from "./pages/ApplicantChat";
+import CompanyChat from "./pages/CompanyChat";
 
 export default function App() {
   return (
@@ -59,14 +60,6 @@ function Home() {
   return (
     <div>
       <h2>Welcome to (insert app name here)!</h2>
-    </div>
-  );
-}
-
-function CompanyChat() {
-  return (
-    <div>
-      <h2>Company chat view</h2>
     </div>
   );
 }

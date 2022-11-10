@@ -3,3 +3,8 @@ export type Message = {
   content: string;
   avatar?: string;
 };
+
+export type ChatParticipant = {
+  avatar?: string;
+  name: string;
+};

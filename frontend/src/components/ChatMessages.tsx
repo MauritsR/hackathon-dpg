@@ -3,7 +3,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import type { Message } from "../types/message";
+import type { Message } from "../types/chat";
 
 type ChatMessagesProps = {
   messages: Message[];
