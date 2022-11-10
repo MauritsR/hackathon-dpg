@@ -59,19 +59,19 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
             <List dense>
               <ListItem>
                 <ListItemIcon>
-                  <CelebrationOutlined />
+                  <CelebrationOutlined sx={{ color: job.primaryColor }} />
                 </ListItemIcon>
                 <ListItemText primary={job.jobCharacteristic1} />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <MopedOutlined />
+                  <MopedOutlined sx={{ color: job.primaryColor }} />
                 </ListItemIcon>
                 <ListItemText primary={job.jobCharacteristic2} />
               </ListItem>
               <ListItem>
                 <ListItemIcon>
-                  <ThumbUpOutlined />
+                  <ThumbUpOutlined sx={{ color: job.primaryColor }} />
                 </ListItemIcon>
                 <ListItemText primary={job.jobCharacteristic3} />
               </ListItem>
@@ -79,7 +79,15 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
             <Typography sx={{ mt: 1 }} variant="body2" color="text.secondary">
               {job.description}
             </Typography>
-            <Chip sx={{ mt: 1, mr: 1 }} label={job.location} />
+            <Chip
+              sx={{
+                mt: 1,
+                mr: 1,
+                backgroundColor: job.primaryColor,
+                color: "white",
+              }}
+              label={job.location}
+            />
             <Chip sx={{ mt: 1 }} label={job.company} variant="outlined" />
           </CardContent>
         </Card>

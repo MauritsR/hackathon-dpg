@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChatParticipant, Message } from "../types/chat";
 
 const useChat = ({
