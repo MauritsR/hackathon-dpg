@@ -1,7 +1,6 @@
 import { Box, Container, CssBaseline } from "@mui/material";
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import MatchFinder from "./pages/MatchFinder";
-import * as routes from "./constants/routes";
 import ApplicantChat from "./pages/ApplicantChat";
 import CompanyChat from "./pages/CompanyChat";
 import Home from "./pages/Home";
@@ -25,24 +24,8 @@ export default function App() {
 function Layout() {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to={routes.matchFinder}>Match finder</Link>
-          </li>
-          <li>
-            <Link to="/company-chat">Company chat</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <hr />
-
       <CssBaseline />
-      <Container maxWidth="sm">
+      <Container sx={{ p: 0 }} maxWidth="sm">
         <Box sx={{ height: "100vh" }}>
           <Outlet />
         </Box>

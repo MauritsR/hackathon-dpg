@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { ChatParticipant, Message } from "../types/chat";
 
 const useChat = ({
-  localUser,
   remoteUser,
 }: {
   localUser: ChatParticipant;
@@ -12,7 +11,8 @@ const useChat = ({
   const [messages, setMessages] = useState<Message[]>([
     {
       author: "system",
-      content: `Hoi ${localUser.name}, Je praat nu met ${remoteUser.name}!`,
+      content: `Hoi, Je praat nu met ${remoteUser.name}!`,
+      avatar: remoteUser.avatar,
     },
   ]);
 

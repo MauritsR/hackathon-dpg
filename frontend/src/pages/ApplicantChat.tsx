@@ -16,8 +16,7 @@ const ApplicantChat = () => {
       name: "applicant",
     },
     remoteUser: {
-      // name: job.company,
-      name: "company",
+      name: job.company,
       avatar: job.logo,
     },
   });
