@@ -33,6 +33,7 @@ const MatchCard = React.forwardRef<HTMLDivElement, MatchCardProps>(
             cursor: "grab",
             willChange: "transform",
             transition: "all 0.3s ease-in-out",
+            boxShadow: 4,
           }}
         >
           <CardMedia

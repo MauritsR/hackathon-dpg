@@ -16,8 +16,9 @@ const Video = styled.video`
   left: 0;
 `;
 
-const ICON_COLOR = "white";
-const ICON_BACKGROUND_COLOR = "#e66465";
+const SECONDARY_COLOR = "5d44db";
+const PRIMARY_COLOR = "#c2db44";
+const SMALL_TEXT_COLOR = "white";
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100%;
-  background: linear-gradient(#e66465, #9198e5);
+  background: linear-gradient(${PRIMARY_COLOR}, #ffffff);
 `;
 
 enum UserType {
@@ -52,7 +53,7 @@ const Home: React.FunctionComponent = () => {
         )}
         {userType === UserType.Applicant && (
           <Typography
-            sx={{ zIndex: 1, color: "white" }}
+            sx={{ zIndex: 1, color: SMALL_TEXT_COLOR, textAlign: "center" }}
             variant="h5"
             gutterBottom
           >
@@ -61,7 +62,7 @@ const Home: React.FunctionComponent = () => {
         )}
         {userType === UserType.Company && (
           <Typography
-            sx={{ zIndex: 1, color: "white" }}
+            sx={{ zIndex: 1, color: SMALL_TEXT_COLOR, textAlign: "center" }}
             variant="h5"
             gutterBottom
           >
@@ -69,18 +70,27 @@ const Home: React.FunctionComponent = () => {
           </Typography>
         )}
         {userType === undefined && (
-          <Typography variant="h2" gutterBottom>
-            Job Chit Chat
+          <Typography
+            sx={{
+              zIndex: 1,
+              color: SECONDARY_COLOR,
+              textStroke: "1px black",
+            }}
+            variant="h2"
+            gutterBottom
+          >
+            Chit Chat GO!
           </Typography>
         )}
+
         {userType === UserType.Applicant && (
           <IconButton
             sx={{
-              backgroundColor: ICON_BACKGROUND_COLOR,
+              backgroundColor: PRIMARY_COLOR,
               ":hover": {
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
               },
-              color: ICON_COLOR,
+              color: SECONDARY_COLOR,
               height: "100px",
               width: "100px",
               m: 4,
@@ -95,11 +105,11 @@ const Home: React.FunctionComponent = () => {
         {userType !== UserType.Applicant && (
           <IconButton
             sx={{
-              backgroundColor: ICON_BACKGROUND_COLOR,
+              backgroundColor: PRIMARY_COLOR,
               ":hover": {
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
               },
-              color: ICON_COLOR,
+              color: SECONDARY_COLOR,
               height: "100px",
               width: "100px",
               m: 4,
@@ -110,7 +120,7 @@ const Home: React.FunctionComponent = () => {
           >
             <Person
               sx={{
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
                 height: "50px",
                 width: "50px",
               }}
@@ -121,11 +131,11 @@ const Home: React.FunctionComponent = () => {
         {userType !== UserType.Company && (
           <IconButton
             sx={{
-              backgroundColor: ICON_BACKGROUND_COLOR,
+              backgroundColor: PRIMARY_COLOR,
               ":hover": {
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
               },
-              color: ICON_COLOR,
+              color: SECONDARY_COLOR,
               height: "100px",
               width: "100px",
               m: 4,
@@ -136,7 +146,7 @@ const Home: React.FunctionComponent = () => {
           >
             <Business
               sx={{
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
                 height: "50px",
                 width: "50px",
               }}
@@ -146,11 +156,11 @@ const Home: React.FunctionComponent = () => {
         {userType === UserType.Company && (
           <IconButton
             sx={{
-              backgroundColor: ICON_BACKGROUND_COLOR,
+              backgroundColor: PRIMARY_COLOR,
               ":hover": {
-                backgroundColor: ICON_BACKGROUND_COLOR,
+                backgroundColor: PRIMARY_COLOR,
               },
-              color: ICON_COLOR,
+              color: SECONDARY_COLOR,
               height: "100px",
               width: "100px",
               m: 4,
